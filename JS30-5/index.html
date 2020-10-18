@@ -128,6 +128,20 @@
 </div>
 
 <script>
+	const panels = document.querySelectorAll('.panel');
+
+	function toggleOpenPanel() {
+		this.classList.toggle('open');
+	}
+
+	function toggleOpenActivePanel(event) {
+		if(event.propertyName.includes('flex'))
+			this.classList.toggle('open-active');
+	}
+
+	panels.forEach(panel => panel.addEventListener('click', toggleOpenPanel));
+	panels.forEach(panel => panel.addEventListener('transitionend', toggleOpenActivePanel));
+
 </script>
 
 
