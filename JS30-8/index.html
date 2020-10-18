@@ -22,6 +22,15 @@
 
 	function draw(event) {
 		if(!isDrawing) return; // Stop function from running when they are not drawing;
+		ctx.beginPath();
+		// Start from
+		ctx.moveTo(lastX, lastY);
+		// Go to
+		ctx.lineTo(event.offsetX, event.offsetY);
+		ctx.stroke();
+		// Set lastX and lastY to remember where user has stopped drawing, so we can start from there the next time
+		lastX = event.offsetX;
+		lastY = event.offsetY;
 	}
 
 	canvas.addEventListener('mousemove', draw);
