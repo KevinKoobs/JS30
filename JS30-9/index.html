@@ -38,7 +38,7 @@
 
 	// Grouping together
 	dogs.forEach(dog => {
-		console.group(`${dog.name}`);
+		console.group(`${dog.name}`); // Use console.groupCollapsed to collapse by default
 		console.log(`I am ${dog.name}`);
 		console.log(`My age is ${dog.age} years`);
 		console.groupEnd(`${dog.name}`);
