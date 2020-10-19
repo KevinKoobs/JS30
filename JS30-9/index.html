@@ -37,6 +37,12 @@
 	// Viewing DOM Elements
 
 	// Grouping together
+	dogs.forEach(dog => {
+		console.group(`${dog.name}`);
+		console.log(`I am ${dog.name}`);
+		console.log(`My age is ${dog.age} years`);
+		console.groupEnd(`${dog.name}`);
+	})
 
 	// counting
 
