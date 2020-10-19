@@ -96,6 +96,15 @@ When a user clicks a checkbox, holds Shift, and then clicks another checkbox a f
 </div>
 
 <script>
+	const inputs = document.querySelectorAll('input[type="checkbox"]');
+
+	function handleCheck(event) {
+		
+	}
+
+	inputs.forEach(input => {
+		input.addEventListener('click', handleCheck);
+	})
 </script>
 </body>
 </html>
