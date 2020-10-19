@@ -97,9 +97,25 @@ When a user clicks a checkbox, holds Shift, and then clicks another checkbox a f
 
 <script>
 	const inputs = document.querySelectorAll('input[type="checkbox"]');
+	let lastChecked;
 
 	function handleCheck(event) {
-		
+		// Check if user had SHIFT-key down;
+		// AND check if they are checking it, not unchecking
+		let inBetween = false;
+		if(event.shiftKey && this.checked) {
+			// Loop over every checkbox
+			inputs.forEach(input => {
+				if(input === this || input === lastChecked ) {
+					// Set inBetween let to the opposite that it is now. It's kind of a toggle
+					// This means that when we are at the last input in the list, inBetween is going to be false
+					// again
+					inBetween = !inBetween
+				}
+				inBetween ? input.checked = true : '';
+			});
+		}
+		lastChecked = this;
 	}
 
 	inputs.forEach(input => {
