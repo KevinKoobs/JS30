@@ -63,7 +63,20 @@
 		}).join('');
 	}
 
+	function toggleDone(event) {
+		// event.target contains the input and the label if clicked on the checkbox
+		// Skip this function unless it's an input
+		if(!event.target.matches('input')) return;
+		const   element = e.target,
+				index = element.dataset.index;
+		// This toggles the 'done' between true and false.
+		items[index].done = !items[index].done;
+		localStorage.setItem('items', JSON.stringify(items));
+		populateList(items, itemsList);
+	}
+
 	addItems.addEventListener('submit', addItem);
+	itemsList.addEventListener('click', toggleDone);
 
 	populateList(items, itemsList);
 </script>
