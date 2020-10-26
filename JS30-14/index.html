@@ -37,13 +37,17 @@
 
     // one way
     const team2 = players.slice(); // Copies original array
-
     // or create a new array and concat the old one in
-
+	const team3 = [].concat(players);
     // or use the new ES6 Spread
+    // Spread takes every item out of original array (or other iterable) and put it into containing array or function
+    const team4 = [...players];
 
     // now when we update it, the original one isn't changed
+    team4[3] = 'Kevin';
+    console.log(team4); // Will output Kevin in the team. Yeah :)
 
+    const team5 = Array.from(players); // Also copies original array into new one
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
