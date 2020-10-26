@@ -13,12 +13,17 @@
 	console.log(age, age2); // outputs 28 28
     age = 26;
     console.log(age, age2); // outputs 26 28
+
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
+	console.log(team, players); // outputs the same arrays
 
     // You might think we can just do something like this:
+    team[3] = 'Lux';
+    console.log(players) // Outputs ['Wes', 'Sarah', 'Ryan', 'Lux']
 
     // however what happens when we update that array?
 
@@ -31,6 +36,7 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+    const team2 = players.slice(); // Copies original array
 
     // or create a new array and concat the old one in
 
