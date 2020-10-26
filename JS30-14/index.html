@@ -8,7 +8,11 @@
 
   <script>
     // start with strings, numbers and booleans
-
+	let age = 28,
+		age2 = age;
+	console.log(age, age2); // outputs 28 28
+    age = 26;
+    console.log(age, age2); // outputs 26 28
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
