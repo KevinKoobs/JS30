@@ -38,7 +38,17 @@
 	const   hero = document.querySelector('.hero'),
 			heroText = hero.querySelector('h1');
 	function shadow(event) {
+		// Similar to const width = hero.offsetWidth;
+		const {offsetWidth: width, offsetHeight: height} = hero;
+		let { offsetX: x, offsetY: y} = event;
 
+		if(this !== event.target) {
+			// this = hero
+			x = x + event.target.offsetLeft;
+			y = y + event.target.offsetTop;
+		}
+
+		// Figure out how far the shadow needs to pull out
 	}
 	hero.addEventListener('mousemove', shadow);
 </script>
