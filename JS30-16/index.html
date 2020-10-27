@@ -36,7 +36,8 @@
 
 <script>
 	const   hero = document.querySelector('.hero'),
-			heroText = hero.querySelector('h1');
+			heroText = hero.querySelector('h1'),
+			walk = 100; // 100px
 	function shadow(event) {
 		// Similar to const width = hero.offsetWidth;
 		const {offsetWidth: width, offsetHeight: height} = hero;
@@ -49,6 +50,13 @@
 		}
 
 		// Figure out how far the shadow needs to pull out
+		const xWalk = Math.round(x / width * walk) - (walk / 2);
+		const yWalk = Math.round(y / height * walk) - (walk / 2);
+
+		heroText.style.textShadow = `
+			${xWalk}px ${yWalk}px 0 red,
+			${xWalk * -1}px ${yWalk * -1}px 0 blue
+		`;
 	}
 	hero.addEventListener('mousemove', shadow);
 </script>
