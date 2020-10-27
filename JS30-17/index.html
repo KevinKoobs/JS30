@@ -50,7 +50,8 @@ const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'N
 
 const   list = document.querySelector('#bands'),
 		regex = /^(an|the|a)$/gi,
-		sortedBands = bands.sort((a, b) => {
+		// This code works. But it can be shortened.
+		_sortedBands = bands.sort((a, b) => {
 			[aFirstWord, aSecond] = a.split(' ', 2);
 			[bFirstWord, bSecond] = b.split(' ', 2);
 
@@ -65,8 +66,14 @@ const   list = document.querySelector('#bands'),
 				}
 				return aFirstWord > bFirstWord ? 1 : -1;
 			}
-
 		});
+
+function strip(bandName) {
+	return bandName.replace(/^(a |the |an )/i, '').trim();
+}
+
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
 list.innerHTML = sortedBands.map(band => {return `<li>${band}</li>`}).join('');
 
 </script>
