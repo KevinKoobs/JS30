@@ -23,4 +23,21 @@ function paintToCanvas() {
 		ctx.drawImage(video, 0, 0, width, height);
 	}, 16);
 }
+
+function takePhoto() {
+	// Play audio sound
+	snap.currentTime = 0;
+	snap.play();
+
+	// Take data out of canvas
+	const data = canvas.toDataURL('image/jpeg'); // Returns base64 file
+	const link = document.createElement('a');
+	link.href = data;
+	link.setAttribute('download', 'Kevin');
+	link.innerHTML = `<img src="${data}" alt="Handsome!">`;
+	strip.insertBefore(link, strip.firstChild);
+}
+
 getVideo();
+
+video.addEventListener('canplay', paintToCanvas);
