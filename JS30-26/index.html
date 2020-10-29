@@ -145,6 +145,7 @@
 	.trigger-enter .dropdown {
 		display: block;
 	}
+
 	.trigger-enter-active .dropdown {
 		opacity: 1;
 	}
@@ -239,15 +240,25 @@
 		background = document.querySelector('.dropdownBackground'),
 		nav = document.querySelector('.top');
 
-	function handleEnter() {
+	function handleEnter()
+	{
 		this.classList.add('trigger-enter');
 		setTimeout(() => this.classList.add('trigger-enter-active'), 150);
 		background.classList.add('open');
 
-
+		const dropdown = this.querySelector('.dropdown'),
+			dropdownCoords = dropdown.getBoundingClientRect(),
+			navCoords = nav.getBoundingClientRect(),
+			coords = {
+				height: dropdownCoords.height,
+				width: dropdownCoords.width
+			};
+		background.style.setProperty('height', `${coords.height}px`);
+		background.style.setProperty('width', `${coords.width}px`);
 	}
 
-	function handleLeave() {
+	function handleLeave()
+	{
 		this.classList.remove('trigger-enter', 'trigger-enter-active');
 		background.classList.remove('open');
 	}
