@@ -252,8 +252,8 @@
 			coords = {
 				height: dropdownCoords.height,
 				width: dropdownCoords.width,
-				top: navCoords.top + 20,
-				left: dropdownCoords.left,
+				top: dropdownCoords.top - navCoords.top,
+				left: dropdownCoords.left - navCoords.left,
 			};
 		background.style.setProperty('height', `${coords.height}px`);
 		background.style.setProperty('width', `${coords.width}px`);
