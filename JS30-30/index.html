@@ -33,9 +33,10 @@
 </div>
 
 <script>
-	const holes = document.querySelectorAll('.hole');
-	const scoreBoard = document.querySelector('.score');
-	const moles = document.querySelectorAll('.mole');
+	const holes = document.querySelectorAll('.hole'),
+	 scoreBoard = document.querySelector('.score'),
+	 moles = document.querySelectorAll('.mole'),
+		timeUp = false;
 	let lastHole;
 
 	function randomTime(min, max)
@@ -52,6 +53,17 @@
 		}
 		lastHole = hole;
 		return hole;
+	}
+
+	function peek() {
+		const time = randomTime(20, 2000),
+			hole = randomHole(holes);
+
+		hole.classList.add('up');
+		setTimeout(() => {
+			hole.classList.remove('up')
+			if(!timeUp) peek();
+		}, time);
 	}
 
 </script>
