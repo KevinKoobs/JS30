@@ -22,10 +22,13 @@
 	speed.addEventListener('mousemove', function(event) {
 		const y = event.pageY - this.offsetTop,
 			percent = y / this.offsetHeight,
-			min = 0.4,
+			min = 0.5,
 			max = 4,
 			height = Math.round(percent * 100) + '%',
+			playbackRate = percent * (max - min) + min;
 		bar.style.height = height;
+		bar.textContent = playbackRate.toFixed(1) + 'x';
+		video.playbackRate = playbackRate;
 	});
 </script>
 </body>
