@@ -40,17 +40,26 @@
 		startX,
 		scrollLeft;
 
-	slider.addEventListener('mousedown', () => {
+	slider.addEventListener('mousedown', (event) => {
 		isDown = true;
+		startX = event.pageX - slider.offsetLeft; // Keep in mind that slider can be offset
+		scrollLeft = slider.scrollLeft; // Keep in memory at which point the slider is scrolled at the start
+		slider.classList.add('active');
 	});
 	slider.addEventListener('mouseleave', () => {
 		isDown = false;
+		slider.classList.remove('active');
 	});
 	slider.addEventListener('mouseup', () => {
 		isDown = false;
+		slider.classList.remove('active');
 	});
-	slider.addEventListener('mousemove', () => {
+	slider.addEventListener('mousemove', (event) => {
 		if(!isDown) return; // Stop function from running
+		event.preventDefault();
+		const x = event.pageX - slider.offsetLeft;
+		const walk = (x - startX) * 3;
+		slider.scrollLeft = scrollLeft - walk
 	});
 </script>
 
